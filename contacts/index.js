@@ -30,5 +30,31 @@ router.get('/contacts/:id',(req,res)=>{
         }
     }
 })
+//Develop PUT /contact/:id API to update contact information
+router.put('/contacts/:id', (req, res) => {
+    let id = req.params.id
+    for(var i=0;i<friend.length;i++)
+    {
+        if(friend[i].id == id){
+            if(friend[i].name != null){
+                friend[i].name = req.body.name
+            }
+            if(friend[i].email != null){
+                friend[i].email = req.body.email
+            }
+            if(friend[i].phone != null){
+                friend[i].phone = req.body.phone
+            }
+            if(friend[i].url != null){
+                friend[i].url = req.body.url
+            }
+            if(friend[i].notes != null){
+                friend[i].notes = req.body.notes
+            }
+            break
+        }
+    }
+})
+
 
 module.exports = router
