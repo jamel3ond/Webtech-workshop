@@ -56,5 +56,25 @@ router.put('/contacts/:id', (req, res) => {
     }
 })
 
+//Develop DELETE /contacts/:id API to remove contact from list
+router.delete('/contacts/:id', (req, res)=> {
+    let id = req.params.id
+    for(var i=0;i<friend.length;i++)
+    {
+        if(friend[i].id == id){
+            friend.splice(i, 1)
+            break
+        }
+    }
+})
+//Develop POST /contacts API to create new contact
+router.post('/contacts', (req, res) => {
+    let newfriend = req.body
+    if(friend.length){
+        newfriend.id = friend.length
+        friend.push(newfriend)
+    }
+    res.json(newfriend)
+})
 
 module.exports = router
