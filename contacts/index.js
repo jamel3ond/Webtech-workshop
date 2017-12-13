@@ -76,5 +76,21 @@ router.post('/contacts', (req, res) => {
     }
     res.json(newfriend)
 })
-
+//Develop GET /contacts API to list all contacts and Develop GET /contacts?name= API to search contact by name
+router.get('/contacts',(req,res)=>{
+    var name = req.query.name
+    if(name != null){
+        for (let i=0; i<friend.length; i++) {
+            if(friend[i].name == name){
+              res.json(friend[i])
+              break
+            }
+        }
+        res.json("Not Found") 
+       
+    }
+    else{
+        res.json(friend)
+    }     
+})
 module.exports = router
